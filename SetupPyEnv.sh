@@ -11,4 +11,16 @@ else
     target_dir=${target_default}
 fi
 
-git clone -v https://github.com/pyenv/pyenv.git ${target_dir}
+if [[ ! -d ${target_dir} ]] ; then
+    git clone -v    \
+        https://github.com/pyenv/pyenv.git              \
+        ${target_dir}
+fi
+
+plugin_venv_dir=${target_dir}/plugins/pyenv-virtualenv
+
+if [[ ! -d ${plugin_venv_dir} ]] ; then
+    git clone -v    \
+        https://github.com/pyenv/pyenv-virtualenv.git   \
+        ${plugin_venv_dir}
+fi
